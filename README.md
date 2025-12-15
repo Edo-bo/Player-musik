@@ -169,21 +169,7 @@ try {
 }
 ```
 
-## 🙏 Kredit & Atribusi
-
-- **Siputz API** - Untuk menyediakan API yang membuat music player ini mungkin
-- **YouTube** - Sebagai sumber konten musik
-- **Font Awesome** - Untuk ikon UI
-- **FlowFalcon** - Untuk pengembangan website Music Player
-
-
-## 📞 Kontak
-
-Jika Anda memiliki pertanyaan, silakan hubungi:
-
-- Email: support@flowfalcon.xyz
-- GitHub: [@FlowFalcon](https://github.com/FlowFalcon)
-- WhatsApp: +62 851-2336-6391
+**SELAMAT MENCOBA**
 
 ---
 
