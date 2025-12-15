@@ -1,0 +1,58 @@
+/**
+ * Konfigurasi sederhana untuk Music Player
+ * Lebih direct dan mudah dipahami
+ */
+
+// API URLs - Basic configuration
+const API_URL = {
+    SEARCH: 'https://api.siputzx.my.id/api/s/youtube',
+    DOWNLOAD_MP3: 'https://api-faa.my.id/faa/ytmp3' // <-- UPDATED URL
+};
+
+// App defaults
+const APP_DEFAULTS = {
+    DEFAULT_SEARCH: 'Dj Full Bass',
+    MAX_RECENT_ITEMS: 20,
+    MAX_QUEUE_ITEMS: 10,
+    STORAGE_KEY: 'recentlyPlayedBaru'
+};
+
+// Utility functions
+const UTILS = {
+    // Format seconds to MM:SS
+    formatTime: function(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs.toString().padStart(2, '0')}`;
+    },
+    
+    // Check if text needs scrolling
+    needsScrolling: function(text, maxLength = 20) {
+        return text && text.length > maxLength;
+    },
+    
+    // Format song object from API response
+    formatSong: function(item) {
+        return {
+            id: item.videoId || '',
+            title: item.title || 'Unknown Title',
+            artist: (item.author && item.author.name) ? item.author.name : 'Unknown Artist',
+            thumbnail: item.thumbnail || item.image || '/api/placeholder/300/300',
+            duration: item.seconds || (item.duration ? item.duration.seconds : 0),
+            timestamp: item.timestamp || (item.duration ? item.duration.timestamp : '0:00'),
+            videoUrl: item.url || ''
+        };
+    },
+    
+    // Format search results
+    formatSearchResults: function(items) {
+        if (!Array.isArray(items)) return [];
+        return items.map(item => this.formatSong(item));
+    },
+    
+    // Get download URL from API response
+    getDownloadUrl: function(data) {
+        // <-- UPDATED logic untuk membaca data.result.mp3
+        return data && data.result && data.result.mp3 ? data.result.mp3 : null;
+    }
+};
